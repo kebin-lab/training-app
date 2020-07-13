@@ -1,22 +1,42 @@
 <template>
-    <v-app>
-        <v-main>
-            <KbnInput formType="input" inputType="text" >E-mail</KbnInput>
-            <KbnInput formType="input" inputType="password">Password</KbnInput>
-            <KbnButton @click="Login">ログインする</KbnButton>
-        </v-main>
-    </v-app>
+  <v-app>
+    <v-main>
+      <v-container>
+        <v-row align="center" justify="center">
+          <v-col>
+              <v-card height="100px" style="width: 70%;">
+                <v-card-text>
+                  <v-form>
+                    <KbnInput inputType="email" v-model="email">E-mail</KbnInput>
+                    <KbnInput inputType="Password" v-model="password">Password</KbnInput>
+                  </v-form>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer>
+                    <KbnButton>ログインする</KbnButton>
+                  </v-spacer>
+                </v-card-actions>
+              </v-card>
+            </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import KbnButton from "@/conponents/atoms/KbnButton.vue"
-import KbnInput from "@/conponents/atoms/KbnInput.vue"
-import KbnIcon from "@/conponents/atoms/KbnIcon.vue"
+import KbnButton from "@/components/atoms/KbnButton.vue"
+import KbnInput from "@/components/atoms/KbnInput.vue"
 export default {
     components: {
         KbnButton,
-        KbnIcon,
         KbnInput
+    },
+    data() {
+        return {
+            email: "",
+            password:""
+        }
     },
     methods: {
         Login() {

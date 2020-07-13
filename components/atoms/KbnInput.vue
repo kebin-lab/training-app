@@ -1,23 +1,19 @@
 <template>
-    <v-app>
-        <v-main>
-            <label><slot /></label>
-            <!-- formTypeとInputTypeで場合分け -->
-            <v-text-field 
-                v-if="formType === 'input'" 
-                :type="inputType ? 'text' : 'password'" 
-                :value="value"
-                v-bind="$attrs"
-                @input="$emit('input', $event.target.value)">
-            </v-text-field>
-            <v-textarea 
-                v-if="formType === 'testarea'" 
-                :value="value" 
-                clearable=true
-                @input="$emit('input', $event.target.value)">
-            </v-textarea>
-        </v-main>
-    </v-app>
+  <div>
+    <label><slot /></label>
+    <!-- formTypeとInputTypeで場合分け -->
+    <v-text-field 
+        v-if="formType === 'input'" 
+        :type="inputType" 
+        :value="value"
+        v-bind="$attrs"
+    ></v-text-field>
+    <v-textarea 
+        v-if="formType === 'textarea'" 
+        :value="value" 
+        clearable=true
+    ></v-textarea>
+  </div>
 </template>
 
 <script>
@@ -34,7 +30,7 @@ export default {
         },
         value: {
             type: String,
-            default: ""
+            default: ''
         }
     }
 }
